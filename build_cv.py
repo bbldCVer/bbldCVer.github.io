@@ -151,7 +151,7 @@ def publication(number, title, authors, venue):
 
 def internship(date, company, team, location, projects):
     left = P(f"<b>{date}</b>", "Meta")
-    right = [P(f"<b>{company}</b>", "BodyInk"), P(f"{team} · {location}", "Meta")]
+    right = [P(f"Research Intern · <b>{company}</b>", "BodyInk"), P(f"{team} · {location}", "Meta")]
     for title, note, description in projects:
         right.append(P(f"<b>{title}</b> — {note}", "BodyInk"))
         right.append(P(description, "Body"))
