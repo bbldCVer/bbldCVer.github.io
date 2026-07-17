@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="description" content="Zihao Zhang — Master's student at Fudan University researching efficient and controllable video generation." />
+    <meta name="theme-color" content="#ffffff" />
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="Zihao Zhang — Academic Homepage" />
+    <meta property="og:description" content="Research in efficient and controllable video generation, spatiotemporal modeling, and generative-model post-training." />
+    <title>Zihao Zhang — Academic Homepage</title>
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+
+  <body>
+    <div class="site-shell">
+      <header class="topbar">
+        <a class="wordmark" href="#about" aria-label="Back to the top">Homepage</a>
+        <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="site-nav">
+          <span></span><span></span>
+          <span class="sr-only">Toggle navigation</span>
+        </button>
+        <nav id="site-nav" class="site-nav" aria-label="Primary navigation">
+          <a class="nav-link is-active" href="#about">About Me</a>
+          <a class="nav-link" href="#publications">Publications</a>
+          <a class="nav-link" href="#experience">Experience</a>
+          <a class="nav-link" href="#education">Education</a>
+          <a class="nav-link nav-link--accent" href="CV_Zihao_Zhang_en.pdf">CV <span aria-hidden="true">↗</span></a>
+        </nav>
+      </header>
+
+      <main class="layout">
+        <aside class="profile-column" aria-label="Profile">
+          <div class="profile-card">
+            <div class="avatar-placeholder" role="img" aria-label="Profile photo coming soon"></div>
+            <p class="eyebrow">ACADEMIC HOMEPAGE</p>
+            <h1>Zihao<br />Zhang</h1>
+            <p class="profile-role">Master's Student<br />Fudan University</p>
+
+            <div class="profile-rule"></div>
+
+            <dl class="profile-facts">
+              <div>
+                <dt>Advisor</dt>
+                <dd>Prof. Zuxuan Wu</dd>
+              </div>
+              <div>
+                <dt>Based in</dt>
+                <dd>Shanghai, China</dd>
+              </div>
+            </dl>
+
+            <div class="profile-links">
+              <a href="mailto:bbldcver@gmail.com">
+                <span class="link-icon" aria-hidden="true">@</span>
+                <span>bbldcver@gmail.com</span>
+              </a>
+              <a href="https://github.com/bbldCVer" target="_blank" rel="noreferrer">
+                <span class="link-icon" aria-hidden="true">GH</span>
+                <span>github.com/bbldCVer</span>
+              </a>
+              <a href="https://scholar.google.com/citations?hl=zh-CN&amp;authuser=1&amp;user=_7r2J74AAAAJ" target="_blank" rel="noreferrer">
+                <span class="link-icon" aria-hidden="true">GS</span>
+                <span>Google Scholar</span>
+              </a>
+            </div>
+          </div>
+
+          <a class="download-card" href="CV_Zihao_Zhang_en.pdf">
+            <span>
+              <small>CURRICULUM VITAE</small>
+              <strong>Download my CV</strong>
+            </span>
+            <span class="download-arrow" aria-hidden="true">↗</span>
+          </a>
+
+        </aside>
+
+        <div class="content-column">
+          <section id="about" class="hero section-anchor">
+            <h2>Biography</h2>
+            <p class="hero-lede">I am a master's student in the School of Computer Science at Fudan University, advised by <a href="https://zxwu.azurewebsites.net/" target="_blank" rel="noreferrer">Prof. Zuxuan Wu</a>.</p>
+            <div class="research-summary">
+              <h3>Research Interests</h3>
+              <p>My research focuses on <strong>efficient and controllable video generation</strong>, <strong>spatiotemporal modeling</strong>, and <strong>post-training for video generation models</strong>. I am particularly interested in video frame interpolation, video motion editing, camera-controllable generation, reinforcement learning, and on-policy distillation.</p>
+            </div>
+          </section>
+
+          <section id="publications" class="section section-anchor">
+            <div class="section-heading section-heading--row">
+              <div>
+                <h2>Publications</h2>
+              </div>
+            </div>
+
+            <div class="publication-list">
+              <article class="publication-card">
+                <div class="publication-media media--eden">
+                  <img src="assets/papers/eden-pipeline.png" alt="EDEN model pipeline" loading="lazy" />
+                  <span class="publication-badge">CVPR 2025</span>
+                </div>
+                <div class="publication-body">
+                  <p class="publication-number">01</p>
+                  <h3><a href="https://arxiv.org/abs/2503.15831" target="_blank" rel="noreferrer">EDEN: Enhanced Diffusion for High-quality Large-motion Video Frame Interpolation</a></h3>
+                  <p class="publication-authors"><strong>Zihao Zhang</strong>, Haoran Chen, Haoyu Zhao, Guansong Lu, Yanwei Fu, Hang Xu, Zuxuan Wu</p>
+                  <p class="publication-venue">IEEE/CVF Conference on Computer Vision and Pattern Recognition (CVPR), 2025</p>
+                  <div class="publication-links">
+                    <a href="https://arxiv.org/abs/2503.15831" target="_blank" rel="noreferrer">Paper <span>↗</span></a>
+                    <a href="https://github.com/bbldCVer/EDEN" target="_blank" rel="noreferrer">Code <span>↗</span></a>
+                    <a href="https://doi.org/10.1109/cvpr52734.2025.00202" target="_blank" rel="noreferrer">CVPR <span>↗</span></a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="publication-card publication-card--no-media">
+                <div class="publication-media media--speed" aria-hidden="true">
+                  <div class="speed-mark"><span>SPEED</span><small>ONE-STEP PIXEL DIFFUSION</small></div>
+                  <span class="publication-badge">ACM MM 2026</span>
+                </div>
+                <div class="publication-body">
+                  <p class="publication-number">02</p>
+                  <h3>SPEED: One-Step Pixel Diffusion for High-quality Video Frame Interpolation</h3>
+                  <p class="publication-authors"><strong>Zihao Zhang</strong>, Haoyu Zhao, Siqian Yang, Yidi Wu, Yudong Jiang, Zuxuan Wu</p>
+                  <p class="publication-venue">ACM International Conference on Multimedia (ACM MM), 2026</p>
+                  <p class="publication-note">Paper and code links will be added when the project is released.</p>
+                </div>
+              </article>
+
+              <article class="publication-card">
+                <div class="publication-media media--ct">
+                  <img src="assets/papers/ct-framework.png" alt="CT-1 vision-language-camera model overview" loading="lazy" />
+                  <span class="publication-badge">ACM MM 2026</span>
+                </div>
+                <div class="publication-body">
+                  <p class="publication-number">03</p>
+                  <h3><a href="https://arxiv.org/abs/2604.09201" target="_blank" rel="noreferrer">CT-1: Vision-Language-Camera Models Transfer Spatial Reasoning Knowledge to Camera-Controllable Video Generation</a></h3>
+                  <p class="publication-authors">Haoyu Zhao*, <strong>Zihao Zhang*</strong>, Jiaxi Gu, Haoran Chen, Qingping Zheng, Pin Tang, Yeying Jin, Yuang Zhang, Junqi Cheng, Zenghui Lu, Peng Shu, Zuxuan Wu, Yu-Gang Jiang</p>
+                  <p class="publication-venue">ACM International Conference on Multimedia (ACM MM), 2026</p>
+                  <div class="publication-links">
+                    <a href="https://arxiv.org/abs/2604.09201" target="_blank" rel="noreferrer">Paper <span>↗</span></a>
+                    <a href="https://github.com/gulucaptain/Camera-Transformer-1" target="_blank" rel="noreferrer">Code <span>↗</span></a>
+                    <a href="https://gulucaptain.github.io/Camera-Transformer-1/" target="_blank" rel="noreferrer">Project page <span>↗</span></a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="publication-card">
+                <div class="publication-media media--motion">
+                  <img src="assets/papers/motion-framework.png" alt="MotionFollower editing framework" loading="lazy" />
+                  <span class="publication-badge">ICCV 2025</span>
+                </div>
+                <div class="publication-body">
+                  <p class="publication-number">04</p>
+                  <h3><a href="https://arxiv.org/abs/2405.20325" target="_blank" rel="noreferrer">MotionFollower: Editing Video Motion via Lightweight Score-Guided Diffusion</a></h3>
+                  <p class="publication-authors">Shuyuan Tu, Qi Dai, <strong>Zihao Zhang</strong>, Sicheng Xie, Zhi-Qi Cheng, Chong Luo, Xintong Han, Zuxuan Wu, Yu-Gang Jiang</p>
+                  <p class="publication-venue">IEEE/CVF International Conference on Computer Vision (ICCV), 2025</p>
+                  <div class="publication-links">
+                    <a href="https://arxiv.org/abs/2405.20325" target="_blank" rel="noreferrer">Paper <span>↗</span></a>
+                    <a href="https://github.com/Francis-Rings/MotionFollower" target="_blank" rel="noreferrer">Code <span>↗</span></a>
+                    <a href="https://francis-rings.github.io/MotionFollower/" target="_blank" rel="noreferrer">Project page <span>↗</span></a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="publication-card">
+                <div class="publication-media media--vidiff">
+                  <img src="assets/papers/vidiff-overview.png" alt="VIDiff model overview and video translation examples" loading="lazy" />
+                  <span class="publication-badge">arXiv 2023</span>
+                </div>
+                <div class="publication-body">
+                  <p class="publication-number">05</p>
+                  <h3><a href="https://arxiv.org/abs/2311.18837" target="_blank" rel="noreferrer">VIDiff: Translating Videos via Multi-Modal Instructions with Diffusion Models</a></h3>
+                  <p class="publication-authors">Zhen Xing, Qi Dai, <strong>Zihao Zhang</strong>, Hui Zhang, Han Hu, Zuxuan Wu, Yu-Gang Jiang</p>
+                  <p class="publication-venue">arXiv preprint arXiv:2311.18837, 2023</p>
+                  <div class="publication-links">
+                    <a href="https://arxiv.org/abs/2311.18837" target="_blank" rel="noreferrer">Paper <span>↗</span></a>
+                    <a href="https://github.com/ChenHsing/VIDiff" target="_blank" rel="noreferrer">Code <span>↗</span></a>
+                    <a href="https://chenhsing.github.io/VIDiff/" target="_blank" rel="noreferrer">Project page <span>↗</span></a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="publication-card">
+                <div class="publication-media media--anime">
+                  <img src="assets/papers/anime-structure.png" alt="AniME adaptive multi-agent animation production framework" loading="lazy" />
+                  <span class="publication-badge">SIGGRAPH Asia 2025</span>
+                </div>
+                <div class="publication-body">
+                  <p class="publication-number">06</p>
+                  <h3><a href="https://arxiv.org/abs/2508.18781" target="_blank" rel="noreferrer">AniME: Adaptive Multi-Agent Planning for Long Animation Generation</a></h3>
+                  <p class="publication-authors">Lisai Zhang, Baohan Xu, Siqian Yang, Mingyu Yin, Jing Liu, Chao Xu, Siqi Wang, Yidi Wu, Yuxin Hong, <strong>Zihao Zhang</strong>, Yanzhang Liang, Yudong Jiang</p>
+                  <p class="publication-venue">Proceedings of the SIGGRAPH Asia 2025 Posters, 2025</p>
+                  <div class="publication-links">
+                    <a href="https://arxiv.org/abs/2508.18781" target="_blank" rel="noreferrer">Paper <span>↗</span></a>
+                    <a href="https://doi.org/10.1145/3757374.3771455" target="_blank" rel="noreferrer">ACM <span>↗</span></a>
+                  </div>
+                </div>
+              </article>
+
+              <article class="publication-card publication-card--no-media">
+                <div class="publication-media media--eva" aria-hidden="true">
+                  <div class="eva-mark"><span>EVA</span><small>REINFORCEMENT LEARNING FOR ANIME VIDEO GENERATION</small></div>
+                  <span class="publication-badge">ICASSP 2026</span>
+                </div>
+                <div class="publication-body">
+                  <p class="publication-number">07</p>
+                  <h3><a href="https://doi.org/10.1109/ICASSP55912.2026.11460549" target="_blank" rel="noreferrer">EVA: Enhancing Anime Video Generation via Reinforcement Learning</a></h3>
+                  <p class="publication-authors">Yidi Wu, Bingwen Zhu, <strong>Zihao Zhang</strong>, Siqian Yang, Lisai Zhang, Baohan Xu, Mingyu Yin, Yanzhang Liang, Yudong Jiang</p>
+                  <p class="publication-venue">IEEE International Conference on Acoustics, Speech and Signal Processing (ICASSP), 2026</p>
+                  <div class="publication-links">
+                    <a href="https://doi.org/10.1109/ICASSP55912.2026.11460549" target="_blank" rel="noreferrer">Paper <span>↗</span></a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section id="experience" class="section section-anchor">
+            <div class="section-heading">
+              <h2>Experience</h2>
+            </div>
+            <div class="timeline">
+              <article class="timeline-item">
+                <div class="timeline-date">Apr 2025 — Jan 2026</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <p class="timeline-label">Algorithm Intern · Shanghai, China</p>
+                  <h3>BiliBili Inc.</h3>
+                  <p>Virtual Human Group · Efficient and controllable visual generation, with a focus on reinforcement learning.</p>
+                </div>
+              </article>
+              <article class="timeline-item">
+                <div class="timeline-date">Jul 2024 — Mar 2025</div>
+                <div class="timeline-marker"></div>
+                <div class="timeline-content">
+                  <p class="timeline-label">Algorithm Intern · Shanghai, China</p>
+                  <h3>Huawei</h3>
+                  <p>Noah's Ark Lab · Controllable image and video generation.</p>
+                </div>
+              </article>
+            </div>
+          </section>
+
+          <section id="education" class="section section-anchor">
+            <div class="section-heading section-heading--row">
+              <div>
+                <h2>Education</h2>
+              </div>
+            </div>
+            <div class="education-grid">
+              <article class="education-card education-card--featured">
+                <p class="education-date">Sep 2023 — Jun 2026</p>
+                <h3>Fudan University</h3>
+                <p>Master's degree · School of Computer Science</p>
+                <span>Advisor: Prof. Zuxuan Wu</span>
+              </article>
+              <article class="education-card">
+                <p class="education-date">Sep 2018 — Jun 2022</p>
+                <h3>Wuhan University</h3>
+                <p>Undergraduate study · School of Chemistry and Molecular Sciences</p>
+              </article>
+            </div>
+          </section>
+
+          <footer class="site-footer">
+            <span>© <span id="current-year">2026</span> Zihao Zhang</span>
+            <span>Built for the open web · <a href="https://github.com/bbldCVer" target="_blank" rel="noreferrer">GitHub</a></span>
+          </footer>
+        </div>
+      </main>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
