@@ -20,4 +20,4 @@ Then open <http://localhost:8000>.
 - `CV_Zihao_Zhang_en.pdf` — downloadable English CV.
 - `assets/papers/` — locally cached paper thumbnails used in the publication cards.
 
-The Google Scholar entry links to the public profile. The current SPEED manuscript is hosted locally from `assets/papers/SPEED.pdf`; a code or project-page link can be added to `index.html` after release.
+The Google Scholar entry links to the public profile. SPEED intentionally has no paper, code, or project-page link yet; these can be added to `index.html` after the public release.

@@ -205,7 +205,7 @@ story += [internship(
     [
         (
             "SPEED: One-Step Pixel Diffusion for High-quality Video Frame Interpolation",
-            "First author, ACM MM 2026",
+            "Co-first author, ACM MM 2026",
             "Led model design, training optimization, and experimental validation. Proposed a one-step pixel-space diffusion framework to address detail loss from latent compression and the cost of multi-step sampling. Designed a progressive multi-stage DiT, Noise-Update-Only Attention, and Drift-aware Timestep Sampling. SPEED runs 63.3% faster with 10.6% lower memory usage than prior diffusion baselines, supports 4K interpolation, and substantially improves high-frequency detail fidelity.",
         ),
         (
@@ -237,7 +237,7 @@ story += [internship(
 story += [PageBreak()]
 story += [P("Publications", "Name"), Spacer(1, 6)]
 story += [publication(1, "EDEN: Enhanced Diffusion for High-quality Large-motion Video Frame Interpolation", "<b>Zihao Zhang</b>, Haoran Chen, Haoyu Zhao, Guansong Lu, Yanwei Fu, Hang Xu, Zuxuan Wu", "CVPR 2025")]
-story += [publication(2, "SPEED: One-Step Pixel Diffusion for High-quality Video Frame Interpolation", "<b>Zihao Zhang</b>, Haoyu Zhao, Siqian Yang, Yidi Wu, Yudong Jiang, Zuxuan Wu", "ACM MM 2026")]
+story += [publication(2, "SPEED: One-Step Pixel Diffusion for High-quality Video Frame Interpolation", "<b>Zihao Zhang*</b>, Haoyu Zhao*, Siqian Yang, Yidi Wu, Yudong Jiang, Zuxuan Wu", "ACM MM 2026 · * Equal contribution")]
 story += [publication(3, "CT-1: Vision-Language-Camera Models Transfer Spatial Reasoning Knowledge to Camera-Controllable Video Generation", "Haoyu Zhao*, <b>Zihao Zhang*</b>, Jiaxi Gu, Haoran Chen, Qingping Zheng, Pin Tang, Yeying Jin, Yuang Zhang, Junqi Cheng, Zenghui Lu, Peng Shu, Zuxuan Wu, Yu-Gang Jiang", "ACM MM 2026")]
 story += [publication(4, "MotionFollower: Editing Video Motion via Lightweight Score-Guided Diffusion", "Shuyuan Tu, Qi Dai, <b>Zihao Zhang</b>, Sicheng Xie, Zhi-Qi Cheng, Chong Luo, Xintong Han, Zuxuan Wu, Yu-Gang Jiang", "ICCV 2025")]
 story += [publication(5, "VIDiff: Translating Videos via Multi-Modal Instructions with Diffusion Models", "Zhen Xing, Qi Dai, <b>Zihao Zhang</b>, Hui Zhang, Han Hu, Zuxuan Wu, Yu-Gang Jiang", "arXiv:2311.18837, 2023")]
