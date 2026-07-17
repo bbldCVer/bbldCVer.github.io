@@ -7,6 +7,7 @@ from reportlab.platypus import (
     BaseDocTemplate,
     Frame,
     KeepTogether,
+    PageBreak,
     PageTemplate,
     Paragraph,
     Spacer,
@@ -67,8 +68,8 @@ styles.add(ParagraphStyle(
     name="Body",
     parent=styles["Normal"],
     fontName="Helvetica",
-    fontSize=8.35,
-    leading=10.8,
+    fontSize=8.7,
+    leading=11.6,
     textColor=MUTED,
     spaceAfter=2,
 ))
@@ -81,8 +82,8 @@ styles.add(ParagraphStyle(
     name="PaperTitle",
     parent=styles["Normal"],
     fontName="Helvetica-Bold",
-    fontSize=8.35,
-    leading=10.2,
+    fontSize=9.2,
+    leading=11.6,
     textColor=INK,
     spaceAfter=2,
 ))
@@ -90,8 +91,8 @@ styles.add(ParagraphStyle(
     name="PaperMeta",
     parent=styles["Normal"],
     fontName="Helvetica",
-    fontSize=7.5,
-    leading=9.2,
+    fontSize=8.2,
+    leading=10.4,
     textColor=MUTED,
 ))
 
@@ -143,9 +144,27 @@ def publication(number, title, authors, venue):
         ("LEFTPADDING", (0, 0), (-1, -1), 0),
         ("RIGHTPADDING", (0, 0), (-1, -1), 4),
         ("TOPPADDING", (0, 0), (-1, -1), 0),
-        ("BOTTOMPADDING", (0, 0), (-1, -1), 4),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 8),
     ]))
     return table
+
+
+def internship(date, company, team, location, projects):
+    left = P(f"<b>{date}</b>", "Meta")
+    right = [P(f"<b>{company}</b>", "BodyInk"), P(f"{team} · {location}", "Meta")]
+    for title, note, description in projects:
+        right.append(P(f"<b>{title}</b> — {note}", "BodyInk"))
+        right.append(P(description, "Body"))
+        right.append(Spacer(1, 3))
+    table = Table([[left, right]], colWidths=[31 * mm, 144 * mm], hAlign="LEFT")
+    table.setStyle(TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 5),
+        ("TOPPADDING", (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 7),
+    ]))
+    return KeepTogether(table)
 
 
 def draw_page(canvas, doc):
@@ -171,23 +190,52 @@ story = []
 story += [P("Zihao Zhang", "Name")]
 story += [P("Master's Student at Fudan University · Advisor: Prof. Zuxuan Wu", "Subhead")]
 story += [P("Shanghai, China  ·  <link href='mailto:bbldcver@gmail.com'>bbldcver@gmail.com</link>  ·  <link href='https://github.com/bbldCVer'>GitHub</link>  ·  <link href='https://scholar.google.com/citations?hl=zh-CN&amp;authuser=1&amp;user=_7r2J74AAAAJ'>Google Scholar</link>", "Subhead")]
-story += [Spacer(1, 5)]
-story += [P("RESEARCH PROFILE", "Section")]
-story += [P("My research focuses on efficient and controllable video generation, spatiotemporal modeling, and post-training methods for generative video models. I study diffusion-based video frame interpolation, motion editing, camera-controllable generation, and reinforcement learning with on-policy distillation.", "Body")]
+story += [Spacer(1, 7)]
 
 story += section("Education")
-story += [education("Sep 2023 — Jun 2026", "Master's degree in Computer Science", "Fudan University", "Shanghai, China", "School of Computer Science · Advisor: Prof. Zuxuan Wu")]
-story += [education("Sep 2018 — Jun 2022", "Undergraduate study", "Wuhan University", "Wuhan, China", "School of Chemistry and Molecular Sciences")]
+story += [education("Sep 2023 — Jun 2026", "Master's Degree", "Fudan University", "Shanghai, China", "School of Computer Science · Advisor: Prof. Zuxuan Wu")]
+story += [education("Sep 2018 — Jun 2022", "Bachelor's Degree", "Wuhan University", "Wuhan, China", "School of Chemistry and Molecular Sciences")]
 
-story += section("Research experience")
-story += [experience("Apr 2025 — Jan 2026", "Algorithm Intern", "BiliBili Inc.", "Virtual Human Group · Shanghai, China", ["Efficient and controllable visual generation with reinforcement learning."])]
-story += [experience("Jul 2024 — Mar 2025", "Algorithm Intern", "Huawei", "Noah's Ark Lab · Shanghai, China", ["Controllable image and video generation."])]
+story += section("Research Experience")
+story += [internship(
+    "Apr 2025 — Mar 2026",
+    "BiliBili Inc.",
+    "Virtual Human Group · Image and Video Generation",
+    "Shanghai, China",
+    [
+        (
+            "SPEED: One-Step Pixel Diffusion for High-quality Video Frame Interpolation",
+            "First author, ACM MM 2026",
+            "Led model design, training optimization, and experimental validation. Proposed a one-step pixel-space diffusion framework to address detail loss from latent compression and the cost of multi-step sampling. Designed a progressive multi-stage DiT, Noise-Update-Only Attention, and Drift-aware Timestep Sampling. SPEED runs 63.3% faster with 10.6% lower memory usage than prior diffusion baselines, supports 4K interpolation, and substantially improves high-frequency detail fidelity.",
+        ),
+        (
+            "CT-1: Vision-Language-Camera Models for Camera-Controllable Video Generation",
+            "Co-first author, ACM MM 2026",
+            "Contributed to the Vision-Language-Camera model, training-data pipeline, and video-generation system. Transferred spatial reasoning from vision-language models to camera-trajectory prediction and video diffusion. Helped construct CT-200K with more than 47 million frames, improving camera-control accuracy by 25.7% over prior methods.",
+        ),
+    ],
+)]
+story += [internship(
+    "Jul 2024 — Mar 2025",
+    "Huawei",
+    "Noah's Ark Lab · Image and Video Generation",
+    "Shanghai, China",
+    [
+        (
+            "EDEN: Enhanced Diffusion for High-quality Large-motion Video Frame Interpolation",
+            "First author, CVPR 2025",
+            "Led framework design, training, and evaluation. Introduced a Transformer Tokenizer to strengthen intermediate-frame representations, together with temporal attention and start/end-frame difference conditioning in the Diffusion Transformer. EDEN improves spatiotemporal consistency under complex nonlinear motion, reducing LPIPS by nearly 10% on DAVIS and SNU-FILM and by about 8% on the high-resolution DAIN-HD benchmark.",
+        ),
+        (
+            "MotionFollower: Editing Video Motion via Lightweight Score-Guided Diffusion",
+            "Third author, ICCV 2025",
+            "Contributed to diffusion-based video motion editing with lightweight pose and appearance controllers and dual-branch score guidance. The method preserves subject appearance and background consistency while modifying motion, reduces GPU memory usage by approximately 80%, and supports large human and camera motions.",
+        ),
+    ],
+)]
 
-story += section("Research directions")
-story += [experience("Oct 2023 — Present", "Efficient and Controllable Video Generation & Spatiotemporal Modeling", "", "", ["Diffusion-based video frame interpolation, motion editing, and camera-controllable generation, with an emphasis on temporal consistency, structural alignment, and high-frequency detail fidelity.", "Multimodal conditioning, spatial reasoning, start/end-frame control, human-pose and camera-trajectory control, pixel-space modeling, one-step generation, and lightweight network design."])]
-story += [experience("Jan 2026 — Present", "Reinforcement Learning & On-Policy Distillation for Video Generation", "", "", ["Multi-dimensional reward feedback and student-distribution teacher supervision to improve generation quality, motion, and temporal consistency while reducing train–inference distribution shift."])]
-
-story += section("Selected publications")
+story += [PageBreak()]
+story += [P("Publications", "Name"), Spacer(1, 6)]
 story += [publication(1, "EDEN: Enhanced Diffusion for High-quality Large-motion Video Frame Interpolation", "<b>Zihao Zhang</b>, Haoran Chen, Haoyu Zhao, Guansong Lu, Yanwei Fu, Hang Xu, Zuxuan Wu", "CVPR 2025")]
 story += [publication(2, "SPEED: One-Step Pixel Diffusion for High-quality Video Frame Interpolation", "<b>Zihao Zhang</b>, Haoyu Zhao, Siqian Yang, Yidi Wu, Yudong Jiang, Zuxuan Wu", "ACM MM 2026")]
 story += [publication(3, "CT-1: Vision-Language-Camera Models Transfer Spatial Reasoning Knowledge to Camera-Controllable Video Generation", "Haoyu Zhao*, <b>Zihao Zhang*</b>, Jiaxi Gu, Haoran Chen, Qingping Zheng, Pin Tang, Yeying Jin, Yuang Zhang, Junqi Cheng, Zenghui Lu, Peng Shu, Zuxuan Wu, Yu-Gang Jiang", "ACM MM 2026")]
