@@ -1,3 +1,5 @@
+from html import escape
+
 from reportlab.lib import colors
 from reportlab.lib.enums import TA_LEFT
 from reportlab.lib.pagesizes import A4
@@ -27,6 +29,10 @@ SOFT = colors.HexColor("#7E897C")
 ACCENT_HEX = "#4F7FA6"
 LINE = colors.HexColor("#D9E5EF")
 PANEL = colors.HexColor("#F6F9FC")
+
+YU_GANG_JIANG_SCHOLAR = "https://scholar.google.com/citations?user=f3_FP8AAAAAJ&hl=zh-CN&authuser=1&oi=ao"
+ZUXUAN_WU_SCHOLAR = "https://scholar.google.com/citations?user=7t12hVkAAAAJ&hl=zh-CN&authuser=1"
+HANG_XU_SCHOLAR = "https://scholar.google.com/citations?user=J_8TX6sAAAAJ&hl=zh-CN&authuser=1&oi=ao"
 
 
 styles = getSampleStyleSheet()
@@ -134,6 +140,10 @@ styles.add(ParagraphStyle(
 
 def P(text, style="Body"):
     return Paragraph(text, styles[style])
+
+
+def external_link(text, url):
+    return f"<link href='{escape(url, quote=True)}'>{escape(text)}</link>"
 
 
 def section(title):
@@ -259,7 +269,12 @@ class CVDocTemplate(BaseDocTemplate):
 
 story = []
 story += [P("Zihao Zhang", "Name")]
-story += [P("Master's Student at Fudan University · Advisors: Prof. Yu-Gang Jiang &amp; Prof. Zuxuan Wu", "Subhead")]
+story += [P(
+    "Master's Student at Fudan University · Advisors: "
+    f"{external_link('Prof. Yu-Gang Jiang', YU_GANG_JIANG_SCHOLAR)} &amp; "
+    f"{external_link('Prof. Zuxuan Wu', ZUXUAN_WU_SCHOLAR)}",
+    "Subhead",
+)]
 story += [P("Shanghai, China  ·  <link href='mailto:bbldcver@gmail.com'>bbldcver@gmail.com</link>  ·  <link href='https://github.com/bbldCVer'>GitHub</link>  ·  <link href='https://scholar.google.com/citations?hl=zh-CN&amp;authuser=1&amp;user=_7r2J74AAAAJ'>Google Scholar</link>", "Subhead")]
 story += [Spacer(1, 5)]
 
@@ -286,7 +301,15 @@ story += [themes([
 ])]
 
 story += section("Education")
-story += [education("Sep 2023 — Jun 2026", "Master's Degree", "Fudan University (QS 26)", "Shanghai, China", "School of Computer Science · GPA: 3.5 · Advisors: Prof. Yu-Gang Jiang &amp; Prof. Zuxuan Wu")]
+story += [education(
+    "Sep 2023 — Jun 2026",
+    "Master's Degree",
+    "Fudan University (QS 26)",
+    "Shanghai, China",
+    "School of Computer Science · GPA: 3.5 · Advisors: "
+    f"{external_link('Prof. Yu-Gang Jiang', YU_GANG_JIANG_SCHOLAR)} &amp; "
+    f"{external_link('Prof. Zuxuan Wu', ZUXUAN_WU_SCHOLAR)}",
+)]
 story += [education("Sep 2018 — Jun 2022", "Bachelor's Degree", "Wuhan University (QS 165)", "Wuhan, China", "School of Chemistry and Molecular Sciences")]
 
 story += section("Awards &amp; Honors")
@@ -322,7 +345,7 @@ story += [internship(
 story += [internship(
     "Jul 2024 — Mar 2025",
     "Huawei",
-    "Noah's Ark Lab · Advised by Hang Xu",
+    f"Noah's Ark Lab · Advised by {external_link('Hang Xu', HANG_XU_SCHOLAR)}",
     "Shanghai, China",
     [
         (
