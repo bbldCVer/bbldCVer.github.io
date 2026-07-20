@@ -286,8 +286,8 @@ story += [themes([
 ])]
 
 story += section("Education")
-story += [education("Sep 2023 — Jun 2026", "Master's Degree", "Fudan University (QS WUR 2027: #26)", "Shanghai, China", "School of Computer Science · GPA: 3.5 · Advisors: Prof. Yu-Gang Jiang &amp; Prof. Zuxuan Wu")]
-story += [education("Sep 2018 — Jun 2022", "Bachelor's Degree", "Wuhan University (QS WUR 2027: #=165)", "Wuhan, China", "School of Chemistry and Molecular Sciences")]
+story += [education("Sep 2023 — Jun 2026", "Master's Degree", "Fudan University (QS 26)", "Shanghai, China", "School of Computer Science · GPA: 3.5 · Advisors: Prof. Yu-Gang Jiang &amp; Prof. Zuxuan Wu")]
+story += [education("Sep 2018 — Jun 2022", "Bachelor's Degree", "Wuhan University (QS 165)", "Wuhan, China", "School of Chemistry and Molecular Sciences")]
 
 story += section("Awards &amp; Honors")
 story += [honor("2025", "First-Class Academic Scholarship", "Fudan University")]
@@ -298,7 +298,7 @@ story += section("Research Experience")
 story += [internship(
     "Apr 2025 — Mar 2026",
     "BiliBili Inc.",
-    "Virtual Human Group · Image and Video Generation",
+    "Virtual Human Group",
     "Shanghai, China",
     [
         (
@@ -322,7 +322,7 @@ story += [internship(
 story += [internship(
     "Jul 2024 — Mar 2025",
     "Huawei",
-    "Noah's Ark Lab · Image and Video Generation · Advised by Hang Xu",
+    "Noah's Ark Lab · Advised by Hang Xu",
     "Shanghai, China",
     [
         (
