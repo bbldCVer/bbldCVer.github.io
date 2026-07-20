@@ -24,8 +24,9 @@ MARGIN_BOTTOM = 12 * mm
 INK = colors.HexColor("#101525")
 MUTED = colors.HexColor("#657080")
 SOFT = colors.HexColor("#7E897C")
-LINE = colors.HexColor("#DDE1DD")
-LIME = colors.HexColor("#C8F169")
+ACCENT_HEX = "#4F7FA6"
+LINE = colors.HexColor("#D9E5EF")
+PANEL = colors.HexColor("#F6F9FC")
 
 
 styles = getSampleStyleSheet()
@@ -53,8 +54,8 @@ styles.add(ParagraphStyle(
     fontSize=10,
     leading=12,
     textColor=INK,
-    spaceBefore=5,
-    spaceAfter=4,
+    spaceBefore=4,
+    spaceAfter=3,
 ))
 styles.add(ParagraphStyle(
     name="Meta",
@@ -71,12 +72,46 @@ styles.add(ParagraphStyle(
     fontSize=8.7,
     leading=11.6,
     textColor=MUTED,
-    spaceAfter=2,
+    spaceAfter=1.5,
 ))
 styles.add(ParagraphStyle(
     name="BodyInk",
     parent=styles["Body"],
     textColor=INK,
+))
+styles.add(ParagraphStyle(
+    name="Summary",
+    parent=styles["Body"],
+    fontSize=8.5,
+    leading=11.2,
+    textColor=INK,
+    spaceAfter=1,
+))
+styles.add(ParagraphStyle(
+    name="ThemeTitle",
+    parent=styles["Normal"],
+    fontName="Helvetica-Bold",
+    fontSize=8.1,
+    leading=10,
+    textColor=INK,
+    spaceAfter=1.5,
+))
+styles.add(ParagraphStyle(
+    name="ThemeBody",
+    parent=styles["Normal"],
+    fontName="Helvetica",
+    fontSize=7.6,
+    leading=9.5,
+    textColor=MUTED,
+))
+styles.add(ParagraphStyle(
+    name="Contribution",
+    parent=styles["Body"],
+    fontSize=8.25,
+    leading=10.7,
+    leftIndent=7,
+    firstLineIndent=-7,
+    spaceAfter=1.5,
 ))
 styles.add(ParagraphStyle(
     name="PaperTitle",
@@ -103,6 +138,41 @@ def P(text, style="Body"):
 
 def section(title):
     return [P(title.upper(), "Section")]
+
+
+def themes(items):
+    cells = []
+    for title, description in items:
+        cells.append([
+            P(title, "ThemeTitle"),
+            P(description, "ThemeBody"),
+        ])
+    table = Table([cells], colWidths=[58.3 * mm] * 3, hAlign="LEFT")
+    table.setStyle(TableStyle([
+        ("BACKGROUND", (0, 0), (-1, -1), PANEL),
+        ("BOX", (0, 0), (-1, -1), 0.5, LINE),
+        ("INNERGRID", (0, 0), (-1, -1), 0.5, LINE),
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 6),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 6),
+        ("TOPPADDING", (0, 0), (-1, -1), 5),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 5),
+    ]))
+    return table
+
+
+def honor(date, title, detail):
+    left = P(f"<b>{date}</b>", "Meta")
+    right = P(f"<b>{title}</b> · {detail}", "Body")
+    table = Table([[left, right]], colWidths=[31 * mm, 144 * mm], hAlign="LEFT")
+    table.setStyle(TableStyle([
+        ("VALIGN", (0, 0), (-1, -1), "TOP"),
+        ("LEFTPADDING", (0, 0), (-1, -1), 0),
+        ("RIGHTPADDING", (0, 0), (-1, -1), 5),
+        ("TOPPADDING", (0, 0), (-1, -1), 0),
+        ("BOTTOMPADDING", (0, 0), (-1, -1), 1),
+    ]))
+    return table
 
 
 def experience(date, title, company, detail, bullets):
@@ -152,10 +222,11 @@ def publication(number, title, authors, venue):
 def internship(date, company, team, location, projects):
     left = P(f"<b>{date}</b>", "Meta")
     right = [P(f"Research Intern · <b>{company}</b>", "BodyInk"), P(f"{team} · {location}", "Meta")]
-    for title, note, description in projects:
+    for title, note, contributions in projects:
         right.append(P(f"<b>{title}</b> — {note}", "BodyInk"))
-        right.append(P(description, "Body"))
-        right.append(Spacer(1, 3))
+        for contribution in contributions:
+            right.append(P(f"<font color='{ACCENT_HEX}'>•</font>&nbsp;&nbsp;{contribution}", "Contribution"))
+        right.append(Spacer(1, 2))
     table = Table([[left, right]], colWidths=[31 * mm, 144 * mm], hAlign="LEFT")
     table.setStyle(TableStyle([
         ("VALIGN", (0, 0), (-1, -1), "TOP"),
@@ -181,20 +252,47 @@ def draw_page(canvas, doc):
 
 class CVDocTemplate(BaseDocTemplate):
     def __init__(self, filename):
-        super().__init__(filename, pagesize=A4, leftMargin=MARGIN_X, rightMargin=MARGIN_X, topMargin=17 * mm, bottomMargin=12 * mm)
+        super().__init__(filename, pagesize=A4, leftMargin=MARGIN_X, rightMargin=MARGIN_X, topMargin=15 * mm, bottomMargin=10 * mm)
         frame = Frame(self.leftMargin, self.bottomMargin, self.width, self.height, id="normal", leftPadding=0, rightPadding=0, topPadding=0, bottomPadding=0)
         self.addPageTemplates([PageTemplate(id="cv", frames=[frame], onPage=draw_page)])
 
 
 story = []
 story += [P("Zihao Zhang", "Name")]
-story += [P("Master's Student at Fudan University · Advisor: Prof. Zuxuan Wu", "Subhead")]
+story += [P("Master's Student at Fudan University · Advisors: Prof. Yu-Gang Jiang &amp; Prof. Zuxuan Wu", "Subhead")]
 story += [P("Shanghai, China  ·  <link href='mailto:bbldcver@gmail.com'>bbldcver@gmail.com</link>  ·  <link href='https://github.com/bbldCVer'>GitHub</link>  ·  <link href='https://scholar.google.com/citations?hl=zh-CN&amp;authuser=1&amp;user=_7r2J74AAAAJ'>Google Scholar</link>", "Subhead")]
-story += [Spacer(1, 7)]
+story += [Spacer(1, 5)]
+
+story += section("Research Profile")
+story += [P(
+    "Researcher at the intersection of <b>embodied intelligence</b> and generative visual modeling. I develop controllable and efficient video models for camera-aware scene evolution, large-motion temporal prediction, and human-motion editing—visual foundations for embodied agents. First/co-first author at CVPR 2025 and ACM MM 2026, with seven publications across CVPR, ICCV, ACM MM, SIGGRAPH Asia, and ICASSP.",
+    "Summary",
+)]
+
+story += section("Research Themes")
+story += [themes([
+    (
+        "Generative World Models",
+        "Camera- and motion-conditioned video synthesis for modeling how scenes evolve under embodied viewpoints and interactions.",
+    ),
+    (
+        "Spatial &amp; Motion Intelligence",
+        "Multimodal spatial reasoning, camera planning, large motion, and temporally coherent scene understanding.",
+    ),
+    (
+        "Efficient Visual Generation",
+        "One-step pixel diffusion and lightweight control for scalable, high-resolution visual-dynamics simulation.",
+    ),
+])]
 
 story += section("Education")
-story += [education("Sep 2023 — Jun 2026", "Master's Degree", "Fudan University", "Shanghai, China", "School of Computer Science · Advisor: Prof. Zuxuan Wu")]
+story += [education("Sep 2023 — Jun 2026", "Master's Degree", "Fudan University", "Shanghai, China", "School of Computer Science · GPA: 3.5 · Advisors: Prof. Yu-Gang Jiang &amp; Prof. Zuxuan Wu")]
 story += [education("Sep 2018 — Jun 2022", "Bachelor's Degree", "Wuhan University", "Wuhan, China", "School of Chemistry and Molecular Sciences")]
+
+story += section("Awards &amp; Honors")
+story += [honor("2025", "First-Class Academic Scholarship", "Fudan University")]
+story += [honor("2020 &amp; 2021", "First-Class Scholarship and Grant", "Wuhan University")]
+story += [honor("2025", "EDEN Patent Application", "Huawei Noah's Ark Lab · Large-motion video frame interpolation")]
 
 story += section("Research Experience")
 story += [internship(
@@ -206,12 +304,18 @@ story += [internship(
         (
             "SPEED: One-Step Pixel Diffusion for High-quality Video Frame Interpolation",
             "Co-first author, ACM MM 2026",
-            "Led model design, training optimization, and experimental validation. Proposed a one-step pixel-space diffusion framework to address detail loss from latent compression and the cost of multi-step sampling. Designed a progressive multi-stage DiT, Noise-Update-Only Attention, and Drift-aware Timestep Sampling. SPEED runs 63.3% faster with 10.6% lower memory usage than prior diffusion baselines, supports 4K interpolation, and substantially improves high-frequency detail fidelity.",
+            [
+                "Led the one-step pixel-space diffusion framework and designed a progressive multi-stage DiT, Noise-Update-Only Attention, and Drift-aware Timestep Sampling to learn motion, structure, and appearance from coarse to fine.",
+                "Achieved state-of-the-art visual-dynamics prediction: 8.8% lower LPIPS on SNU-FILM, 63.3% faster inference, 10.6% less memory, and up to 51.5% lower LPIPS on 4K benchmarks.",
+            ],
         ),
         (
             "CT-1: Vision-Language-Camera Models for Camera-Controllable Video Generation",
             "Co-first author, ACM MM 2026",
-            "Contributed to the Vision-Language-Camera model, training-data pipeline, and video-generation system. Transferred spatial reasoning from vision-language models to camera-trajectory prediction and video diffusion. Helped construct CT-200K with more than 47 million frames, improving camera-control accuracy by 25.7% over prior methods.",
+            [
+                "Co-developed a Vision-Language-Camera model that grounds visual observations and language instructions in SE(3) camera trajectories, enabling spatially aware and temporally stable viewpoint planning.",
+                "Contributed to the CT-200K curation pipeline (>47M frames) and controllable video-diffusion system, improving camera-control success by 25.7% and advancing spatially grounded generative world modeling.",
+            ],
         ),
     ],
 )]
@@ -224,12 +328,18 @@ story += [internship(
         (
             "EDEN: Enhanced Diffusion for High-quality Large-motion Video Frame Interpolation",
             "First author, CVPR 2025",
-            "Led framework design, training, and evaluation. Introduced a Transformer Tokenizer to strengthen intermediate-frame representations, together with temporal attention and start/end-frame difference conditioning in the Diffusion Transformer. EDEN improves spatiotemporal consistency under complex nonlinear motion, reducing LPIPS by nearly 10% on DAVIS and SNU-FILM and by about 8% on the high-resolution DAIN-HD benchmark.",
+            [
+                "Led EDEN's architecture and training, developing a Transformer Tokenizer, dual-stream temporal attention, and frame-difference conditioning for large, nonlinear motion.",
+                "Reduced LPIPS by nearly 10% on DAVIS and SNU-FILM and by about 8% on DAIN-HD, improving high-fidelity temporal state prediction under fast scene changes.",
+            ],
         ),
         (
             "MotionFollower: Editing Video Motion via Lightweight Score-Guided Diffusion",
             "Third author, ICCV 2025",
-            "Contributed to diffusion-based video motion editing with lightweight pose and appearance controllers and dual-branch score guidance. The method preserves subject appearance and background consistency while modifying motion, reduces GPU memory usage by approximately 80%, and supports large human and camera motions.",
+            [
+                "Contributed lightweight pose/reference controllers and two-branch score guidance to transfer target body motion while retaining subject identity, background details, and camera dynamics.",
+                "Reduced GPU memory by approximately 80% versus MotionEditor while improving videos with large camera motion and complex backgrounds, enabling efficient motion-conditioned human-scene synthesis.",
+            ],
         ),
     ],
 )]
