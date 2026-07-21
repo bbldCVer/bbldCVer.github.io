@@ -1,0 +1,283 @@
+% Zihao Zhang's English CV
+% Overleaf: create a new project, upload this file, and click Recompile.
+% The source uses only packages included in a standard Overleaf installation.
+
+\documentclass[10pt,a4paper]{article}
+
+\usepackage[T1]{fontenc}
+\usepackage[scaled=0.96]{helvet}
+\renewcommand{\familydefault}{\sfdefault}
+
+\usepackage[a4paper,left=18mm,right=18mm,top=15mm,bottom=13mm,headheight=4.3mm,headsep=2.7mm,footskip=8mm]{geometry}
+\usepackage[table]{xcolor}
+\usepackage{array}
+\usepackage{tabularx}
+\usepackage{enumitem}
+\usepackage{fancyhdr}
+\usepackage{microtype}
+\usepackage[bookmarks=false]{hyperref}
+
+\definecolor{Ink}{HTML}{101525}
+\definecolor{Muted}{HTML}{657080}
+\definecolor{Soft}{HTML}{7E897C}
+\definecolor{Accent}{HTML}{4F7FA6}
+\definecolor{Rule}{HTML}{D9E5EF}
+\definecolor{Panel}{HTML}{F6F9FC}
+
+\hypersetup{
+  colorlinks=true,
+  urlcolor=Muted,
+  linkcolor=Muted,
+  pdfauthor={Zihao Zhang},
+  pdftitle={Zihao Zhang - Curriculum Vitae},
+  pdfsubject={Academic Curriculum Vitae}
+}
+
+\setlength{\parindent}{0pt}
+\setlength{\parskip}{0pt}
+\setlength{\tabcolsep}{0pt}
+\setlength{\emergencystretch}{1.5em}
+\pagestyle{fancy}
+\fancyhf{}
+\renewcommand{\headrulewidth}{0.45pt}
+\renewcommand{\footrulewidth}{0pt}
+\makeatletter
+\renewcommand{\headrule}{\hbox to\headwidth{\color{Rule}\leaders\hrule height \headrulewidth\hfill}}
+\makeatother
+\fancyfoot[L]{\color{Soft}\fontsize{7.5}{8.5}\selectfont Zihao Zhang \textperiodcentered{} Curriculum Vitae}
+\fancyfoot[R]{\color{Soft}\fontsize{7.5}{8.5}\selectfont \thepage}
+
+\newcommand{\Section}[1]{%
+  \vspace{3.5pt}%
+  {\color{Ink}\bfseries\fontsize{10}{12}\selectfont\MakeUppercase{#1}\par}%
+  \vspace{2.5pt}%
+}
+
+\newcommand{\Meta}[1]{{\color{Soft}\fontsize{8.2}{10.5}\selectfont #1}}
+\newcommand{\Body}[1]{{\color{Muted}\fontsize{8.35}{10.65}\selectfont #1}}
+\newcommand{\BodyInk}[1]{{\color{Ink}\fontsize{8.55}{10.8}\selectfont #1}}
+
+\newcommand{\EducationEntry}[5]{%
+  \begin{tabularx}{\textwidth}{@{}p{31mm}@{\hspace{0mm}}X@{}}
+    \Meta{\textbf{#1}} &
+    \begin{minipage}[t]{\linewidth}
+      \BodyInk{\textbf{#3}}\par
+      \vspace{0.3pt}\Meta{#2 \textperiodcentered{} #4}\par
+      \vspace{0.3pt}\Body{#5}
+    \end{minipage}
+  \end{tabularx}\par\vspace{2.3pt}%
+}
+
+\newcommand{\HonorEntry}[3]{%
+  \begin{tabularx}{\textwidth}{@{}p{31mm}X@{}}
+    \Meta{\textbf{#1}} & \Body{\textbf{#2} \textperiodcentered{} #3}
+  \end{tabularx}\par\vspace{0.2pt}%
+}
+
+\newenvironment{Contributions}{%
+  \begin{itemize}[
+    leftmargin=3.4mm,
+    labelsep=1.2mm,
+    label=\textcolor{Accent}{\raisebox{0.15ex}{\scriptsize\textbullet}},
+    topsep=1.2pt,
+    itemsep=0.6pt,
+    parsep=0pt,
+    partopsep=0pt
+  ]
+  \color{Muted}\fontsize{8.15}{10.45}\selectfont
+}{\end{itemize}}
+
+\newcommand{\Project}[3]{%
+  {\color{Ink}\fontsize{8.5}{10.7}\selectfont\textbf{#1} \textemdash{} #2\par}%
+  #3
+  \vspace{0.4pt}%
+}
+
+\newcommand{\ExperienceEntry}[4]{%
+  \begin{tabularx}{\textwidth}{@{}p{31mm}X@{}}
+    \Meta{\textbf{#1}} &
+    \begin{minipage}[t]{\linewidth}
+      \BodyInk{Research Intern \textperiodcentered{} \textbf{#2}}\par
+      \vspace{0.3pt}\Meta{#3}\par
+      \vspace{1.1pt}#4
+    \end{minipage}
+  \end{tabularx}\par\vspace{3.2pt}%
+}
+
+\newcommand{\Publication}[4]{%
+  \begin{tabularx}{\textwidth}{@{}p{11mm}X@{}}
+    \Meta{\textbf{#1}} &
+    \begin{minipage}[t]{\linewidth}
+      {\color{Ink}\bfseries\fontsize{9.2}{11.4}\selectfont #2\par}
+      \vspace{1.2pt}{\color{Muted}\fontsize{8.2}{10.3}\selectfont #3\par}
+      {\color{Muted}\fontsize{8.2}{10.3}\selectfont #4\par}
+    \end{minipage}
+  \end{tabularx}\par\vspace{6.2pt}%
+}
+
+\begin{document}
+\color{Muted}
+
+% -----------------------------------------------------------------------------
+% Header
+% -----------------------------------------------------------------------------
+{\color{Ink}\bfseries\fontsize{25}{26}\selectfont Zihao Zhang\par}
+\vspace{3pt}
+{\fontsize{8.8}{11.2}\selectfont
+Master's Student at Fudan University \textperiodcentered{} Advisors:
+\href{https://scholar.google.com/citations?user=f3_FP8AAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}{Prof. Yu-Gang Jiang}
+\&
+\href{https://scholar.google.com/citations?user=7t12hVkAAAAJ\&hl=zh-CN\&authuser=1}{Prof. Zuxuan Wu}\par
+Shanghai, China
+\textperiodcentered{}
+\href{mailto:bbldcver@gmail.com}{bbldcver@gmail.com}
+\textperiodcentered{}
+\href{https://github.com/bbldCVer}{GitHub}
+\textperiodcentered{}
+\href{https://scholar.google.com/citations?hl=zh-CN\&authuser=1\&user=\_7r2J74AAAAJ}{Google Scholar}\par
+}
+
+% -----------------------------------------------------------------------------
+% Research profile and themes
+% -----------------------------------------------------------------------------
+\Section{Research Profile}
+{\color{Ink}\fontsize{8.5}{11.1}\selectfont
+Researcher at the intersection of \textbf{embodied intelligence} and generative visual modeling. I develop controllable and efficient video models for camera-aware scene evolution, large-motion temporal prediction, and human-motion editing---visual foundations for embodied agents. First/co-first author at CVPR 2025 and ACM MM 2026, with seven publications across CVPR, ICCV, ACM MM, SIGGRAPH Asia, and ICASSP.\par
+}
+
+\Section{Research Themes}
+{%
+\setlength{\tabcolsep}{2.2mm}%
+\renewcommand{\arraystretch}{1.08}%
+\arrayrulecolor{Rule}%
+\begin{tabularx}{\textwidth}{|>{\columncolor{Panel}\raggedright\arraybackslash}X|>{\columncolor{Panel}\raggedright\arraybackslash}X|>{\columncolor{Panel}\raggedright\arraybackslash}X|}
+\hline
+{\color{Ink}\bfseries\fontsize{8.1}{9.8}\selectfont Generative World Models}\par
+\vspace{1pt}{\color{Muted}\fontsize{7.6}{9.4}\selectfont Camera- and motion-conditioned video synthesis for modeling how scenes evolve under embodied viewpoints and interactions.}
+&
+{\color{Ink}\bfseries\fontsize{8.1}{9.8}\selectfont Spatial \& Motion Intelligence}\par
+\vspace{1pt}{\color{Muted}\fontsize{7.6}{9.4}\selectfont Multimodal spatial reasoning, camera planning, large motion, and temporally coherent scene understanding.}
+&
+{\color{Ink}\bfseries\fontsize{8.1}{9.8}\selectfont Efficient Visual Generation}\par
+\vspace{1pt}{\color{Muted}\fontsize{7.6}{9.4}\selectfont One-step pixel diffusion and lightweight control for scalable, high-resolution visual-dynamics simulation.}
+\\ \hline
+\end{tabularx}%
+}
+
+% -----------------------------------------------------------------------------
+% Education and honors
+% -----------------------------------------------------------------------------
+\Section{Education}
+\EducationEntry
+  {Sep 2023 \textemdash{} Jun 2026}
+  {Master's Degree}
+  {Fudan University (QS 26)}
+  {Shanghai, China}
+  {School of Computer Science \textperiodcentered{} GPA: 3.5 \textperiodcentered{} Advisors:
+   \href{https://scholar.google.com/citations?user=f3_FP8AAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}{Prof. Yu-Gang Jiang}
+   \&
+   \href{https://scholar.google.com/citations?user=7t12hVkAAAAJ\&hl=zh-CN\&authuser=1}{Prof. Zuxuan Wu}}
+\EducationEntry
+  {Sep 2018 \textemdash{} Jun 2022}
+  {Bachelor's Degree}
+  {Wuhan University (QS 165)}
+  {Wuhan, China}
+  {School of Chemistry and Molecular Sciences}
+
+\Section{Awards \& Honors}
+\HonorEntry{2025}{First-Class Academic Scholarship}{Fudan University}
+\HonorEntry{2020 \& 2021}{First-Class Scholarship and Grant}{Wuhan University}
+\HonorEntry{2025}{EDEN Patent Application}{Huawei Noah's Ark Lab \textperiodcentered{} Large-motion video frame interpolation}
+
+% -----------------------------------------------------------------------------
+% Research experience
+% -----------------------------------------------------------------------------
+\Section{Research Experience}
+\ExperienceEntry
+  {Apr 2025 \textemdash{} Mar 2026}
+  {BiliBili Inc.}
+  {Virtual Human Group \textperiodcentered{} Shanghai, China}
+  {%
+    \Project
+      {SPEED: One-Step Pixel Diffusion for High-quality Video Frame Interpolation}
+      {Co-first author, ACM MM 2026}
+      {\begin{Contributions}
+        \item Led the one-step pixel-space diffusion framework and designed a progressive multi-stage DiT, Noise-Update-Only Attention, and Drift-aware Timestep Sampling to learn motion, structure, and appearance from coarse to fine.
+        \item Achieved state-of-the-art visual-dynamics prediction: 8.8\% lower LPIPS on SNU-FILM, 63.3\% faster inference, 10.6\% less memory, and up to 51.5\% lower LPIPS on 4K benchmarks.
+      \end{Contributions}}
+    \Project
+      {CT-1: Vision-Language-Camera Models for Camera-Controllable Video Generation}
+      {Co-first author, ACM MM 2026}
+      {\begin{Contributions}
+        \item Co-developed a Vision-Language-Camera model that grounds visual observations and language instructions in SE(3) camera trajectories, enabling spatially aware and temporally stable viewpoint planning.
+        \item Contributed to the CT-200K curation pipeline (\textgreater{}47M frames) and controllable video-diffusion system, improving camera-control success by 25.7\% and advancing spatially grounded generative world modeling.
+      \end{Contributions}}
+  }
+
+\ExperienceEntry
+  {Jul 2024 \textemdash{} Mar 2025}
+  {Huawei}
+  {Noah's Ark Lab \textperiodcentered{} Advised by
+   \href{https://scholar.google.com/citations?user=J_8TX6sAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}{Hang Xu}
+   \textperiodcentered{} Shanghai, China}
+  {%
+    \Project
+      {EDEN: Enhanced Diffusion for High-quality Large-motion Video Frame Interpolation}
+      {First author, CVPR 2025}
+      {\begin{Contributions}
+        \item Led EDEN's architecture and training, developing a Transformer Tokenizer, dual-stream temporal attention, and frame-difference conditioning for large, nonlinear motion.
+        \item Reduced LPIPS by nearly 10\% on DAVIS and SNU-FILM and by about 8\% on DAIN-HD, improving high-fidelity temporal state prediction under fast scene changes.
+      \end{Contributions}}
+    \Project
+      {MotionFollower: Editing Video Motion via Lightweight Score-Guided Diffusion}
+      {Third author, ICCV 2025}
+      {\begin{Contributions}
+        \item Contributed lightweight pose/reference controllers and two-branch score guidance to transfer target body motion while retaining subject identity, background details, and camera dynamics.
+        \item Reduced GPU memory by approximately 80\% versus MotionEditor while improving videos with large camera motion and complex backgrounds, enabling efficient motion-conditioned human-scene synthesis.
+      \end{Contributions}}
+  }
+
+\newpage
+
+% -----------------------------------------------------------------------------
+% Publications
+% -----------------------------------------------------------------------------
+{\color{Ink}\bfseries\fontsize{25}{26}\selectfont Publications\par}
+\vspace{6pt}
+
+\Publication{01}
+  {EDEN: Enhanced Diffusion for High-quality Large-motion Video Frame Interpolation}
+  {\textbf{Zihao Zhang}, Haoran Chen, Haoyu Zhao, Guansong Lu, Yanwei Fu, Hang Xu, Zuxuan Wu}
+  {CVPR 2025}
+
+\Publication{02}
+  {SPEED: One-Step Pixel Diffusion for High-quality Video Frame Interpolation}
+  {\textbf{Zihao Zhang*}, Haoyu Zhao*, Siqian Yang, Yidi Wu, Yudong Jiang, Zuxuan Wu}
+  {ACM MM 2026}
+
+\Publication{03}
+  {CT-1: Vision-Language-Camera Models Transfer Spatial Reasoning Knowledge to Camera-Controllable Video Generation}
+  {Haoyu Zhao*, \textbf{Zihao Zhang*}, Jiaxi Gu, Haoran Chen, Qingping Zheng, Pin Tang, Yeying Jin, Yuang Zhang, Junqi Cheng, Zenghui Lu, Peng Shu, Zuxuan Wu, Yu-Gang Jiang}
+  {ACM MM 2026}
+
+\Publication{04}
+  {MotionFollower: Editing Video Motion via Lightweight Score-Guided Diffusion}
+  {Shuyuan Tu, Qi Dai, \textbf{Zihao Zhang}, Sicheng Xie, Zhi-Qi Cheng, Chong Luo, Xintong Han, Zuxuan Wu, Yu-Gang Jiang}
+  {ICCV 2025}
+
+\Publication{05}
+  {VIDiff: Translating Videos via Multi-Modal Instructions with Diffusion Models}
+  {Zhen Xing, Qi Dai, \textbf{Zihao Zhang}, Hui Zhang, Han Hu, Zuxuan Wu, Yu-Gang Jiang}
+  {arXiv:2311.18837, 2023}
+
+\Publication{06}
+  {AniME: Adaptive Multi-Agent Planning for Long Animation Generation}
+  {Lisai Zhang, Baohan Xu, Siqian Yang, Mingyu Yin, Jing Liu, Chao Xu, Siqi Wang, Yidi Wu, Yuxin Hong, \textbf{Zihao Zhang}, Yanzhang Liang, Yudong Jiang}
+  {SIGGRAPH Asia 2025 Posters}
+
+\Publication{07}
+  {EVA: Enhancing Anime Video Generation via Reinforcement Learning}
+  {Yidi Wu, Bingwen Zhu, \textbf{Zihao Zhang}, Siqian Yang, Lisai Zhang, Baohan Xu, Mingyu Yin, Yanzhang Liang, Yudong Jiang}
+  {ICASSP 2026}
+
+\end{document}
