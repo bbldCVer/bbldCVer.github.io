@@ -16,13 +16,16 @@
 \usepackage{fancyhdr}
 \usepackage{microtype}
 \usepackage[bookmarks=false]{hyperref}
+\usepackage{xcolor}
+\usepackage{fontawesome5}
 
 \definecolor{Ink}{HTML}{101525}
-\definecolor{Muted}{HTML}{657080}
-\definecolor{Soft}{HTML}{7E897C}
+\definecolor{Muted}{HTML}{252A30}
+\definecolor{Soft}{HTML}{555C62}
 \definecolor{Accent}{HTML}{4F7FA6}
 \definecolor{Rule}{HTML}{D9E5EF}
 \definecolor{Panel}{HTML}{F6F9FC}
+\definecolor{myblue}{RGB}{0, 102, 164}
 
 \hypersetup{
   colorlinks=true,
@@ -53,9 +56,9 @@
   \vspace{2.5pt}%
 }
 
-\newcommand{\Meta}[1]{{\color{Soft}\fontsize{8.2}{10.5}\selectfont #1}}
-\newcommand{\Body}[1]{{\color{Muted}\fontsize{8.35}{10.65}\selectfont #1}}
-\newcommand{\BodyInk}[1]{{\color{Ink}\fontsize{8.55}{10.8}\selectfont #1}}
+\newcommand{\Meta}[1]{{\color{Soft}\fontsize{8.5}{11.5}\selectfont #1}}
+\newcommand{\Body}[1]{{\color{Muted}\fontsize{8.5}{11.5}\selectfont #1}}
+\newcommand{\BodyInk}[1]{{\color{Ink}\fontsize{8.5}{11.5}\selectfont #1}}
 
 \newcommand{\EducationEntry}[5]{%
   \begin{tabularx}{\textwidth}{@{}p{31mm}@{\hspace{0mm}}X@{}}
@@ -88,7 +91,7 @@
 }{\end{itemize}}
 
 \newcommand{\Project}[3]{%
-  {\color{Ink}\fontsize{8.5}{10.7}\selectfont\textbf{#1} \textemdash{} #2\par}%
+  {\color{Ink}\fontsize{8.5}{11.5}\selectfont\textbf{#1} \textemdash{} #2\par}%
   #3
   \vspace{0.4pt}%
 }
@@ -97,8 +100,9 @@
   \begin{tabularx}{\textwidth}{@{}p{31mm}X@{}}
     \Meta{\textbf{#1}} &
     \begin{minipage}[t]{\linewidth}
-      \BodyInk{Research Intern \textperiodcentered{} \textbf{#2}}\par
-      \vspace{0.3pt}\Meta{#3}\par
+      \BodyInk{Research Intern \textperiodcentered{} \textbf{#2}}%
+      \hfill\mbox{\Meta{#3}}\par
+      % \vspace{0.3pt}\Meta{#4}\par
       \vspace{1.1pt}#4
     \end{minipage}
   \end{tabularx}\par\vspace{3.2pt}%
@@ -109,8 +113,8 @@
     \Meta{\textbf{#1}} &
     \begin{minipage}[t]{\linewidth}
       {\color{Ink}\bfseries\fontsize{9.2}{11.4}\selectfont #2\par}
-      \vspace{1.2pt}{\color{Muted}\fontsize{8.2}{10.3}\selectfont #3\par}
-      {\color{Muted}\fontsize{8.2}{10.3}\selectfont #4\par}
+      \vspace{1.2pt}{\color{Muted}\fontsize{8.5}{11.5}\selectfont #3\par}
+      {\color{Muted}\fontsize{8.5}{11.5}\selectfont #4\par}
     \end{minipage}
   \end{tabularx}\par\vspace{6.2pt}%
 }
@@ -123,46 +127,54 @@
 % -----------------------------------------------------------------------------
 {\color{Ink}\bfseries\fontsize{25}{26}\selectfont Zihao Zhang\par}
 \vspace{3pt}
-{\fontsize{8.8}{11.2}\selectfont
-Master's Student at Fudan University \textperiodcentered{} Advisors:
-\href{https://scholar.google.com/citations?user=f3_FP8AAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}{Prof. Yu-Gang Jiang}
-\&
-\href{https://scholar.google.com/citations?user=7t12hVkAAAAJ\&hl=zh-CN\&authuser=1}{Prof. Zuxuan Wu}\par
-Shanghai, China
+{\fontsize{8.5}{11.5}\selectfont
+% Master's Student at Fudan University \textperiodcentered{} Advisors:
+% \href{https://scholar.google.com/citations?user=f3_FP8AAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}{\textcolor{myblue}{\underline{Prof. Yu-Gang Jiang}}}
+% \&
+% \href{https://scholar.google.com/citations?user=7t12hVkAAAAJ\&hl=zh-CN\&authuser=1}{\textcolor{myblue}{\underline{Prof. Zuxuan Wu}}}\par
+% Shanghai, China
+% \textperiodcentered{}
+\faEnvelope\ \href{mailto:bbldcver@gmail.com}{\textcolor{myblue}{bbldcver@gmail.com}}
 \textperiodcentered{}
-\href{mailto:bbldcver@gmail.com}{bbldcver@gmail.com}
+\faHome\ \href{https://bbldcver.github.io/}{\textcolor{myblue}{Home Page}}
 \textperiodcentered{}
-\href{https://github.com/bbldCVer}{GitHub}
-\textperiodcentered{}
-\href{https://scholar.google.com/citations?hl=zh-CN\&authuser=1\&user=\_7r2J74AAAAJ}{Google Scholar}\par
+\faGoogle\ \href{https://scholar.google.com/citations?hl=zh-CN\&authuser=1\&user=\_7r2J74AAAAJ}{\textcolor{myblue}{Google Scholar}}\par
 }
 
 % -----------------------------------------------------------------------------
-% Research profile and themes
+% Research profile and interests
 % -----------------------------------------------------------------------------
-\Section{Research Profile}
-{\color{Ink}\fontsize{8.5}{11.1}\selectfont
-Researcher at the intersection of \textbf{embodied intelligence} and generative visual modeling. I develop controllable and efficient video models for camera-aware scene evolution, large-motion temporal prediction, and human-motion editing---visual foundations for embodied agents. First/co-first author at CVPR 2025 and ACM MM 2026, with seven publications across CVPR, ICCV, ACM MM, SIGGRAPH Asia, and ICASSP.\par
-}
+\Section{Profile}
+{\color{Muted}\fontsize{8.5}{11.5}\selectfont
+I am a master's student in the School of Computer Science at Fudan University, advised by \href{https://scholar.google.com/citations?user=f3_FP8AAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}{\textcolor{myblue}{\underline{Prof. Yu-Gang Jiang}}} and \href{https://scholar.google.com/citations?user=7t12hVkAAAAJ\&hl=zh-CN\&authuser=1}{\textcolor{myblue}{\underline{Prof. Zuxuan Wu}}}.
 
-\Section{Research Themes}
+\vspace{0.2em}
+My research explores generative visual modeling for \textbf{embodied intelligence}, with the goal of building \textbf{controllable and efficient visual foundations} that help embodied agents understand and predict how scenes evolve over time.
+
+\vspace{0.2em}
+My work has been published at leading computer vision and multimedia venues, including \textbf{CVPR}, \textbf{ICCV}, \textbf{ACM MM} and \textbf{SIGGRAPH Asia}.\par
+}
+\vspace{5pt}
+
+\Section{Research Interests}
 {%
-\setlength{\tabcolsep}{2.2mm}%
-\renewcommand{\arraystretch}{1.08}%
-\arrayrulecolor{Rule}%
-\begin{tabularx}{\textwidth}{|>{\columncolor{Panel}\raggedright\arraybackslash}X|>{\columncolor{Panel}\raggedright\arraybackslash}X|>{\columncolor{Panel}\raggedright\arraybackslash}X|}
-\hline
-{\color{Ink}\bfseries\fontsize{8.1}{9.8}\selectfont Generative World Models}\par
-\vspace{1pt}{\color{Muted}\fontsize{7.6}{9.4}\selectfont Camera- and motion-conditioned video synthesis for modeling how scenes evolve under embodied viewpoints and interactions.}
-&
-{\color{Ink}\bfseries\fontsize{8.1}{9.8}\selectfont Spatial \& Motion Intelligence}\par
-\vspace{1pt}{\color{Muted}\fontsize{7.6}{9.4}\selectfont Multimodal spatial reasoning, camera planning, large motion, and temporally coherent scene understanding.}
-&
-{\color{Ink}\bfseries\fontsize{8.1}{9.8}\selectfont Efficient Visual Generation}\par
-\vspace{1pt}{\color{Muted}\fontsize{7.6}{9.4}\selectfont One-step pixel diffusion and lightweight control for scalable, high-resolution visual-dynamics simulation.}
-\\ \hline
-\end{tabularx}%
+\color{Muted}\fontsize{8.5}{11.1}\selectfont
+\begin{itemize}[
+leftmargin=3.5mm,
+label=\textcolor{Accent}{\raisebox{0.15ex}{\scriptsize\textbullet}},
+topsep=0pt,
+itemsep=0.6pt,
+parsep=0pt,
+partopsep=0pt
+]
+\item \textbf{Generative world models} and controllable video generation for embodied intelligence
+\vspace{0.2em}
+\item \textbf{Spatial reasoning}, camera planning, and motion understanding
+\vspace{0.2em}
+\item \textbf{Efficient diffusion models} for high-resolution visual generation
+\end{itemize}
 }
+\vspace{5pt}
 
 % -----------------------------------------------------------------------------
 % Education and honors
@@ -183,11 +195,13 @@ Researcher at the intersection of \textbf{embodied intelligence} and generative 
   {Wuhan University (QS 165)}
   {Wuhan, China}
   {School of Chemistry and Molecular Sciences}
+\vspace{5pt}
 
 \Section{Awards \& Honors}
 \HonorEntry{2025}{First-Class Academic Scholarship}{Fudan University}
 \HonorEntry{2020 \& 2021}{First-Class Scholarship and Grant}{Wuhan University}
 \HonorEntry{2025}{EDEN Patent Application}{Huawei Noah's Ark Lab \textperiodcentered{} Large-motion video frame interpolation}
+\vspace{5pt}
 
 % -----------------------------------------------------------------------------
 % Research experience
@@ -196,7 +210,7 @@ Researcher at the intersection of \textbf{embodied intelligence} and generative 
 \ExperienceEntry
   {Apr 2025 \textemdash{} Mar 2026}
   {BiliBili Inc.}
-  {Virtual Human Group \textperiodcentered{} Shanghai, China}
+  {Shanghai, China}
   {%
     \Project
       {SPEED: One-Step Pixel Diffusion for High-quality Video Frame Interpolation}
@@ -216,9 +230,9 @@ Researcher at the intersection of \textbf{embodied intelligence} and generative 
 
 \ExperienceEntry
   {Jul 2024 \textemdash{} Mar 2025}
-  {Huawei}
-  {Noah's Ark Lab \textperiodcentered{} Advised by
-   \href{https://scholar.google.com/citations?user=J_8TX6sAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}{Hang Xu}
+  {Huawei Noah's Ark Lab}
+  {Advised by
+   \href{https://scholar.google.com/citations?user=J_8TX6sAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}{\textcolor{myblue}{\underline{Hang Xu}}}
    \textperiodcentered{} Shanghai, China}
   {%
     \Project
