@@ -61,7 +61,7 @@
 \newcommand{\BodyInk}[1]{{\color{Ink}\fontsize{8.5}{11.5}\selectfont #1}}
 
 \newcommand{\EducationEntry}[5]{%
-  \begin{tabularx}{\textwidth}{@{}p{31mm}@{\hspace{0mm}}X@{}}
+  \begin{tabularx}{\textwidth}{@{}p{31mm}@{\hspace{2mm}}X@{}}
     \Meta{\textbf{#1}} &
     \begin{minipage}[t]{\linewidth}
       \BodyInk{\textbf{#3}}\par
@@ -72,7 +72,7 @@
 }
 
 \newcommand{\HonorEntry}[3]{%
-  \begin{tabularx}{\textwidth}{@{}p{31mm}X@{}}
+  \begin{tabularx}{\textwidth}{@{}p{31mm}@{\hspace{2mm}}X@{}}
     \Meta{\textbf{#1}} & \Body{\textbf{#2} \textperiodcentered{} #3}
   \end{tabularx}\par\vspace{0.2pt}%
 }
@@ -97,7 +97,7 @@
 }
 
 \newcommand{\ExperienceEntry}[4]{%
-  \begin{tabularx}{\textwidth}{@{}p{31mm}X@{}}
+  \begin{tabularx}{\textwidth}{@{}p{31mm}@{\hspace{2mm}}X@{}}
     \Meta{\textbf{#1}} &
     \begin{minipage}[t]{\linewidth}
       \BodyInk{Research Intern \textperiodcentered{} \textbf{#2}}%
