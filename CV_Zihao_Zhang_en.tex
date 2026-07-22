@@ -18,6 +18,7 @@
 \usepackage[bookmarks=false]{hyperref}
 \usepackage{xcolor}
 \usepackage{fontawesome5}
+\usepackage{changepage}
 
 \definecolor{Ink}{HTML}{101525}
 \definecolor{Muted}{HTML}{252A30}
@@ -61,7 +62,7 @@
 \newcommand{\BodyInk}[1]{{\color{Ink}\fontsize{8.5}{11.5}\selectfont #1}}
 
 \newcommand{\EducationEntry}[5]{%
-  \begin{tabularx}{\textwidth}{@{}p{31mm}@{\hspace{2mm}}X@{}}
+  \begin{tabularx}{\textwidth}{@{}p{31mm}@{\hspace{0mm}}X@{}}
     \Meta{\textbf{#1}} &
     \begin{minipage}[t]{\linewidth}
       \BodyInk{\textbf{#3}}\par
@@ -72,7 +73,7 @@
 }
 
 \newcommand{\HonorEntry}[3]{%
-  \begin{tabularx}{\textwidth}{@{}p{31mm}@{\hspace{2mm}}X@{}}
+  \begin{tabularx}{\textwidth}{@{}p{31mm}X@{}}
     \Meta{\textbf{#1}} & \Body{\textbf{#2} \textperiodcentered{} #3}
   \end{tabularx}\par\vspace{0.2pt}%
 }
@@ -96,16 +97,51 @@
   \vspace{0.4pt}%
 }
 
+\newcommand{\ThemeProject}[3]{%
+{\color{Ink}\fontsize{8.5}{11.5}\selectfont
+  #1%
+  {\color{Soft}\textemdash{} \textit{#2}}\par}%
+#3
+\vspace{0.5pt}%
+}
+
+\newenvironment{ResearchThemeList}{%
+\begin{itemize}[
+  leftmargin=3.8mm,
+  labelsep=1.4mm,
+  label=\textcolor{Accent}{\raisebox{0.12ex}{\small\textbullet}},
+  topsep=0.5pt,
+  itemsep=2.8pt,
+  parsep=0pt,
+  partopsep=0pt
+]
+}{\end{itemize}}
+
+% \newcommand{\ExperienceEntry}[4]{%
+%   \begin{tabularx}{\textwidth}{@{}p{31mm}X@{}}
+%     \Meta{\textbf{#1}} &
+%     \begin{minipage}[t]{\linewidth}
+%       \BodyInk{Research Intern \textperiodcentered{} \textbf{#2}}%
+%       \hfill\mbox{\Meta{#3}}\par
+%       % \vspace{0.3pt}\Meta{#4}\par
+%       \vspace{1.1pt}#4
+%     \end{minipage}
+%   \end{tabularx}\par\vspace{3.2pt}%
+% }
 \newcommand{\ExperienceEntry}[4]{%
-  \begin{tabularx}{\textwidth}{@{}p{31mm}@{\hspace{2mm}}X@{}}
-    \Meta{\textbf{#1}} &
-    \begin{minipage}[t]{\linewidth}
-      \BodyInk{Research Intern \textperiodcentered{} \textbf{#2}}%
-      \hfill\mbox{\Meta{#3}}\par
-      % \vspace{0.3pt}\Meta{#4}\par
-      \vspace{1.1pt}#4
-    \end{minipage}
-  \end{tabularx}\par\vspace{3.2pt}%
+\par\addvspace{2pt}%
+\noindent
+\begin{tabularx}{\textwidth}{@{}p{31mm}@{\hspace{2mm}}X@{}}
+  \Meta{\textbf{#1}} &
+  \BodyInk{Research Intern \textperiodcentered{} \textbf{#2}}%
+  \hfill\mbox{\Meta{#3}}
+\end{tabularx}\par
+\nopagebreak[4]%
+\vspace{1.1pt}%
+\begin{adjustwidth}{33mm}{0pt}
+  #4
+\end{adjustwidth}%
+\par\addvspace{6pt}%
 }
 
 \newcommand{\Publication}[4]{%
@@ -146,7 +182,7 @@
 % -----------------------------------------------------------------------------
 \Section{Profile}
 {\color{Muted}\fontsize{8.5}{11.5}\selectfont
-I am a master's student in the School of Computer Science at Fudan University, advised by \href{https://scholar.google.com/citations?user=f3_FP8AAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}{\textcolor{myblue}{\underline{Prof. Yu-Gang Jiang}}} and \href{https://scholar.google.com/citations?user=7t12hVkAAAAJ\&hl=zh-CN\&authuser=1}{\textcolor{myblue}{\underline{Prof. Zuxuan Wu}}}.
+I received my M.S. degree in the School of Computer Science at Fudan University, advised by \href{https://scholar.google.com/citations?user=f3_FP8AAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}{\textcolor{myblue}{\underline{Prof. Yu-Gang Jiang}}} and \href{https://scholar.google.com/citations?user=7t12hVkAAAAJ\&hl=zh-CN\&authuser=1}{\textcolor{myblue}{\underline{Prof. Zuxuan Wu}}}.
 
 \vspace{0.2em}
 My research explores generative visual modeling for \textbf{embodied intelligence}, with the goal of building \textbf{controllable and efficient visual foundations} that help embodied agents understand and predict how scenes evolve over time.
@@ -194,7 +230,7 @@ partopsep=0pt
   {Bachelor's Degree}
   {Wuhan University (QS 165)}
   {Wuhan, China}
-  {School of Chemistry and Molecular Sciences}
+  {School of Chemistry and Molecular Sciences \textperiodcentered{} GPA: 3.3}
 \vspace{5pt}
 
 \Section{Awards \& Honors}
@@ -208,55 +244,117 @@ partopsep=0pt
 % -----------------------------------------------------------------------------
 \Section{Research Experience}
 \ExperienceEntry
-  {Apr 2025 \textemdash{} Mar 2026}
-  {BiliBili Inc.}
-  {Shanghai, China}
-  {%
-    \Project
-      {SPEED: One-Step Pixel Diffusion for High-quality Video Frame Interpolation}
+{Apr 2025 \textemdash{} Jun 2026}
+{BiliBili Inc.}
+{Shanghai, China}
+{%
+  \begin{ResearchThemeList}
+
+    \item
+    {\color{Ink}\bfseries\fontsize{8.7}{11.5}\selectfont
+      Temporal Dynamics Modeling\par}
+    \vspace{0.6pt}
+
+    \ThemeProject
+      {SPEED: One-Step Pixel Diffusion for High-quality Video Frame
+      Interpolation}
+      {First author, ACM MM 2026}
+      {\begin{Contributions}
+        \item Model continuous visual dynamics from surrounding observations
+        to infer high-fidelity intermediate states efficiently.
+        \item Developed a one-step pixel diffusion framework with
+        progressive coarse-to-fine dynamics modeling, improving both
+        fidelity and inference speed.
+      \end{Contributions}}
+
+    \ThemeProject
+      {MinVideo: Minute-scale High-quality Video Generation}
+      {Ongoing project}
+      {\begin{Contributions}
+        \item Model long-horizon visual dynamics to sustain high-quality
+        video generation over minute-scale sequences.
+        \item Developed recurrent segment conditioning with identity
+        anchors, preserving temporal continuity and subject consistency
+        throughout long-form generation.
+      \end{Contributions}}
+
+    \item
+    {\color{Ink}\bfseries\fontsize{8.7}{11.5}\selectfont
+      Spatial Reasoning and Action Prediction\par}
+    \vspace{0.6pt}
+
+    \ThemeProject
+      {CT-1: Vision-Language-Camera Models for Camera-Controllable Video
+      Generation}
       {Co-first author, ACM MM 2026}
       {\begin{Contributions}
-        \item Led the one-step pixel-space diffusion framework and designed a progressive multi-stage DiT, Noise-Update-Only Attention, and Drift-aware Timestep Sampling to learn motion, structure, and appearance from coarse to fine.
-        \item Achieved state-of-the-art visual-dynamics prediction: 8.8\% lower LPIPS on SNU-FILM, 63.3\% faster inference, 10.6\% less memory, and up to 51.5\% lower LPIPS on 4K benchmarks.
+        \item Ground camera-controllable video generation in spatial
+        reasoning from visual observations and language instructions.
+        \item Developed a Vision-Language-Camera model for coherent
+        viewpoint planning and spatially consistent scene evolution.
       \end{Contributions}}
-    \Project
-      {CT-1: Vision-Language-Camera Models for Camera-Controllable Video Generation}
-      {Co-first author, ACM MM 2026}
+
+    \ThemeProject
+      {FM-WAM: Fast World Action Model via Mask}
+      {Ongoing project}
       {\begin{Contributions}
-        \item Co-developed a Vision-Language-Camera model that grounds visual observations and language instructions in SE(3) camera trajectories, enabling spatially aware and temporally stable viewpoint planning.
-        \item Contributed to the CT-200K curation pipeline (\textgreater{}47M frames) and controllable video-diffusion system, improving camera-control success by 25.7\% and advancing spatially grounded generative world modeling.
+        \item Focus future-action prediction on spatial information that is relevant to an agent's behavior.
+        \item Developed mask-guided visual modeling that filters irrelevant context, improving prediction efficiency and reliability.
       \end{Contributions}}
-  }
+
+  \end{ResearchThemeList}
+}
 
 \ExperienceEntry
-  {Jul 2024 \textemdash{} Mar 2025}
-  {Huawei Noah's Ark Lab}
-  {Advised by
-   \href{https://scholar.google.com/citations?user=J_8TX6sAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}{\textcolor{myblue}{\underline{Hang Xu}}}
-   \textperiodcentered{} Shanghai, China}
-  {%
-    \Project
+{Jul 2024 \textemdash{} Mar 2025}
+{Huawei Noah's Ark Lab}
+{Advised by \href{https://scholar.google.com/citations?user=J_8TX6sAAAAJ\&hl=zh-CN\&authuser=1\&oi=ao}
+ {\textcolor{myblue}{\underline{Hang Xu}}}
+ \textperiodcentered{} Shanghai, China}
+{%
+  \begin{ResearchThemeList}
+
+    \item
+    {\color{Ink}\bfseries\fontsize{8.7}{11.5}\selectfont
+      Large-motion Temporal Modeling\par}
+    \vspace{0.6pt}
+
+    \ThemeProject
       {EDEN: Enhanced Diffusion for High-quality Large-motion Video Frame Interpolation}
       {First author, CVPR 2025}
       {\begin{Contributions}
-        \item Led EDEN's architecture and training, developing a Transformer Tokenizer, dual-stream temporal attention, and frame-difference conditioning for large, nonlinear motion.
-        \item Reduced LPIPS by nearly 10\% on DAVIS and SNU-FILM and by about 8\% on DAIN-HD, improving high-fidelity temporal state prediction under fast scene changes.
+        \item Model complex temporal transitions to infer realistic
+        intermediate states under large and nonlinear scene motion.
+        \item Developed a motion-aware diffusion framework that preserves structural details and temporal coherence during high-quality frame
+        interpolation.
       \end{Contributions}}
-    \Project
-      {MotionFollower: Editing Video Motion via Lightweight Score-Guided Diffusion}
+    \vspace{15pt}
+
+    \item
+    {\color{Ink}\bfseries\fontsize{8.7}{11.5}\selectfont
+      Controllable Human Motion Editing\par}
+    \vspace{0.6pt}
+
+    \ThemeProject
+      {MotionFollower: Editing Video Motion via Lightweight Score-Guided
+      Diffusion}
       {Third author, ICCV 2025}
       {\begin{Contributions}
-        \item Contributed lightweight pose/reference controllers and two-branch score guidance to transfer target body motion while retaining subject identity, background details, and camera dynamics.
-        \item Reduced GPU memory by approximately 80\% versus MotionEditor while improving videos with large camera motion and complex backgrounds, enabling efficient motion-conditioned human-scene synthesis.
+        \item Enable controllable human-motion editing while preserving
+        subject identity, scene appearance, and original camera dynamics.
+        \item Contributed to a lightweight motion-guided diffusion framework for expressive motion transfer in complex and dynamic environments.
       \end{Contributions}}
-  }
 
-\newpage
+  \end{ResearchThemeList}
+}
+\vspace{5pt}
+
+% \newpage
 
 % -----------------------------------------------------------------------------
 % Publications
 % -----------------------------------------------------------------------------
-{\color{Ink}\bfseries\fontsize{25}{26}\selectfont Publications\par}
+{\color{Ink}\bfseries\fontsize{12}{14}\selectfont Publications\par}
 \vspace{6pt}
 
 \Publication{01}
@@ -293,5 +391,38 @@ partopsep=0pt
   {EVA: Enhancing Anime Video Generation via Reinforcement Learning}
   {Yidi Wu, Bingwen Zhu, \textbf{Zihao Zhang}, Siqian Yang, Lisai Zhang, Baohan Xu, Mingyu Yin, Yanzhang Liang, Yudong Jiang}
   {ICASSP 2026}
+\vspace{5pt}
+
+% Research agenda
+% ----------------------------------------------------------------------------
+\Section{Research Agenda}
+{%
+\begin{ResearchThemeList}
+
+  \item
+  {\color{Ink}\bfseries\fontsize{8.7}{11.5}\selectfont
+    Memory-Persistent Interactive World Models\par}
+  \vspace{0.6pt}
+
+  \begin{Contributions}
+    \item Build persistent memory mechanisms that maintain coherent
+    environment states across long-horizon interactions.
+    \item Develop efficient generation for real-time prediction of how visual environments evolve under agent actions.
+  \end{Contributions}
+
+  \item
+  {\color{Ink}\bfseries\fontsize{8.7}{11.5}\selectfont
+    Action-Video Consistent World Action Models\par}
+  \vspace{0.6pt}
+
+  \begin{Contributions}
+    \item Explore the bidirectional relationship between agent actions and resulting visual dynamics.
+    \item Explore mutual verification between action-conditioned video
+    prediction and video-grounded action inference for closed-loop
+    self-correction.
+  \end{Contributions}
+
+\end{ResearchThemeList}
+}
 
 \end{document}
